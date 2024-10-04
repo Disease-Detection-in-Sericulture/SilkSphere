@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>
+        Temperature: {{ retriever.temperature }}
+    </h1>
+    
+    <h1>
+        Humidity: {{ retriever.humidity }}
+    </h1>
+
+    <h1>
+        CO2 level: {{ retriever.co2 }}
+    </h1>
+{% endblock %}
