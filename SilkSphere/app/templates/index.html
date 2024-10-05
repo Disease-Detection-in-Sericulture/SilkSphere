@@ -2,23 +2,35 @@
 
 {% block content %}
     
-    <div class="upload-container">
-        <div id="drop-area">
-            <form class="upload-form" method="post" enctype="multipart/form-data">
-                <p>Drag & drop an image or <label for="fileElem" class="browse-label">browse</label></p>
-                <input type="file" id="fileElem" name="file" accept="image/*" required onchange="handleFiles(this.files)">
-                <input type="submit" value="Upload">
-            </form>
+    <h2 class="subheading" id="disease-detection">Disease Detection</h2>
+
+    <div class="container">
+        <div class="upload-container">
+            <div id="drop-area">
+                <img src="{{ url_for('static', filename='cloud.png') }}" alt="Upload Cloud" class="upload-icon">
+                <form id="uploadForm" class="upload-form" method="post" enctype="multipart/form-data">
+                    <p>Drag & drop, or <label for="fileElem" class="browse-label">browse</label> your files</p>
+                    <input type="file" id="fileElem" name="file" accept="image/*" required onchange="handleFiles(this.files)">
+                    <input type="submit" value="Predict" class="styled-upload-button">
+                </form>
+            </div>
         </div>
-        <div id="gallery"></div>
+
+        <div class="image-container">
+            <div id="gallery">
+                {% if uploaded_image %}
+                    <img src="{{ url_for('static', filename=uploaded_image) }}" alt="Uploaded Image">
+                {% endif %}
+            </div>
+
+            {% if result %}
+                <h2 id="prediction">Prediction: {{ result }}</h2>
+            {% endif %}
+        </div>
     </div>
 
-    {% if result %}
-        <h2>Prediction: {{ result }}</h2>
-    {% endif %}
-
     <div class="environment-stats">
-        <!-- <h2>Environmental Statistics</h2> -->
+        <h2 class="subheading" id="environment-stats">Environment Statistics</h2>
         <p>Temperature: {{ retriever.temperature }}°C</p>
         <p>Humidity: {{ retriever.humidity }}%</p>
         <p>CO2 level: {{ retriever.co2 }} ppm</p>

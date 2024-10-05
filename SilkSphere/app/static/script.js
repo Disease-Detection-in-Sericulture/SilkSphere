@@ -1,13 +1,15 @@
 let dropArea = document.getElementById('drop-area');
+let uploadForm = document.getElementById('uploadForm');
+let predictionElement = document.getElementById('prediction');
 
-dropArea.addEventListener('dragenter', preventDefaults, false);
-dropArea.addEventListener('dragleave', preventDefaults, false);
-dropArea.addEventListener('dragover', preventDefaults, false);
-dropArea.addEventListener('drop', preventDefaults, false);
+// Prevent default behaviors on drag events
+['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+    dropArea.addEventListener(eventName, preventDefaults, false);
+});
 
 function preventDefaults(e) {
     e.preventDefault();
-    e.stopPropagation();
+     e.stopPropagation();
 }
 
 dropArea.addEventListener('drop', handleDrop, false);
@@ -22,6 +24,13 @@ function handleFiles(files) {
     let file = files[0];
     if (file && file.type.startsWith('image/')) {
         displayImage(file);
+        if (predictionElement) {
+            predictionElement.remove();
+        }
+        let fileInput = document.getElementById('fileElem');
+        fileInput.files = files;
+
+        uploadForm.submit();
     }
 }
 

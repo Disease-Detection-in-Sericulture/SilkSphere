@@ -8,12 +8,18 @@ from Retriever import Retriever
 
 model = load_model('model.h5')
 
+UPLOAD_FOLDER = 'app/static/uploads/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     retriever = Retriever()
     retriever.retrieve()
 
     result = None 
+    uploaded_image = None
 
     if request.method == 'POST':
         if 'file' not in request.files:
@@ -23,7 +29,7 @@ def index():
 
         if file.filename == '':
             return redirect(request.url)
-        
+
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(file_path)
 
@@ -36,4 +42,6 @@ def index():
 
         result = "Healthy" if predicted_class == 1 else "Diseased"
 
-    return render_template("index.html", retriever=retriever, result=result)
+        uploaded_image = f'uploads/{file.filename}'
+
+    return render_template("index.html", retriever=retriever, result=result, uploaded_image=uploaded_image)
