@@ -1,25 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Upload Silkworm Image for Diagnosis</h1>
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
-        <input type="submit" value="Upload">
-    </form>
+    
+    <div class="upload-container">
+        <div id="drop-area">
+            <form class="upload-form" method="post" enctype="multipart/form-data">
+                <p>Drag & drop an image or <label for="fileElem" class="browse-label">browse</label></p>
+                <input type="file" id="fileElem" name="file" accept="image/*" required onchange="handleFiles(this.files)">
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+        <div id="gallery"></div>
+    </div>
 
     {% if result %}
         <h2>Prediction: {{ result }}</h2>
     {% endif %}
 
-    <h1>
-        Temperature: {{ retriever.temperature }}
-    </h1>
-    
-    <h1>
-        Humidity: {{ retriever.humidity }}
-    </h1>
-
-    <h1>
-        CO2 level: {{ retriever.co2 }}
-    </h1>
+    <div class="environment-stats">
+        <!-- <h2>Environmental Statistics</h2> -->
+        <p>Temperature: {{ retriever.temperature }}°C</p>
+        <p>Humidity: {{ retriever.humidity }}%</p>
+        <p>CO2 level: {{ retriever.co2 }} ppm</p>
+    </div>
 {% endblock %}

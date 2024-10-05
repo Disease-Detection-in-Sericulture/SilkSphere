@@ -4,9 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silk Sphere</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Welcome to silksphere!!</h1>
-    {% block content %} {% endblock %}
+    <header class="navbar">
+        <div class="nav-left">
+            <span class="logo">SILKSPHERE</span>
+            <p class="tagline">Your One-Stop Hub for Silkworm Care and Monitoring</p>
+        </div>
+        <div class="nav-center">
+            <a href="#" class="nav-link">Disease Detection</a>
+            <a href="#" class="nav-link">Environment Condition</a>
+        </div>
+        <div class="nav-right">
+            <button class="toggle-theme">
+                <img id="theme-icon" src="{{ url_for('static', filename='night-mode.png') }}" alt="Theme Toggle">
+            </button>
+        </div>
+    </header>
+
+    <div class="content">
+        {% block content %} 
+        {% endblock %}
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
