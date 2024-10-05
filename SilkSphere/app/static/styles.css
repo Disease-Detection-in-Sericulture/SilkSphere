@@ -214,10 +214,14 @@ body.dark-mode .styled-upload-button:hover {
 }
 
 .environment-stats {
-    margin-top: 20px;
+    margin-top: 50px;
     padding: 10px;
     border-top: 2px solid #eee;
     width: 100%;
+}
+
+.environment-stats h2 {
+    margin-top: 20px;
 }
 
 body.dark-mode .environment-stats {
@@ -237,4 +241,56 @@ body.dark-mode .environment-stats p {
 
 body.dark-mode #prediction {
     color: #f4f4f9;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.stat-item {
+    flex: 1;
+    margin: 0 10px;
+    padding: 50px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+body.dark-mode .stat-item {
+    background-color: #444;
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+    color: #f4f4f9;
+}
+
+.stat-icon {
+    width: 125px;
+    height: 125px;
+}
+
+body.dark-mode .stat-icon {
+    filter: brightness(0.9); /* Slight dimming for dark mode */
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    height: 10px;
+    margin-top: 10px;
+}
+
+body.dark-mode .progress-bar {
+    background-color: #666;
+}
+
+.progress {
+    background-color: #4caf50;
+    height: 100%;
+    border-radius: 5px;
+}
+
+body.dark-mode .progress {
+    background-color: #4caf50; /* Keep the progress green for better visibility */
 }

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
+
     <h2 class="subheading" id="disease-detection">Disease Detection</h2>
 
     <div class="container">
@@ -31,8 +31,32 @@
 
     <div class="environment-stats">
         <h2 class="subheading" id="environment-stats">Environment Statistics</h2>
-        <p>Temperature: {{ retriever.temperature }}°C</p>
-        <p>Humidity: {{ retriever.humidity }}%</p>
-        <p>CO2 level: {{ retriever.co2 }} ppm</p>
+    
+        <div class="stats-container">
+            <div class="stat-item">
+                <img src="{{ url_for('static', filename='temperature-icon.png') }}" alt="Temperature" class="stat-icon">
+                <h3>Temperature</h3>
+                <p>{{ retriever.temperature }}°C</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: {{ retriever.temperature }}%;"></div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <img src="{{ url_for('static', filename='humidity-icon.png') }}" alt="Humidity" class="stat-icon">
+                <h3>Humidity</h3>
+                <p>{{ retriever.humidity }}%</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: {{ retriever.humidity }}%;"></div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <img src="{{ url_for('static', filename='co2-icon.png') }}" alt="CO2 Level" class="stat-icon">
+                <h3>CO2 Level</h3>
+                <p>{{ retriever.co2 }} ppm</p>
+                <div class="progress-bar">
+                    <div class="progress" style="width: {{ retriever.co2 }}%;"></div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
