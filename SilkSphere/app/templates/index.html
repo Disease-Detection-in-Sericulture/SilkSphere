@@ -38,7 +38,14 @@
                 <h3>Temperature</h3>
                 <p>{{ retriever.temperature }}°C</p>
                 <div class="progress-bar">
-                    <div class="progress" style="width: {{ retriever.temperature }}%;"></div>
+                    <div class="progress" style="width: {{ retriever.temperature }}%; background-color: 
+                        {% if retriever.temperature | int <= 20 %} red
+                        {% elif retriever.temperature | int > 20 and retriever.temperature | int < 25 %} yellow
+                        {% elif retriever.temperature | int >= 25 and retriever.temperature | int <= 28 %} #3FFF00 
+                        {% elif retriever.temperature | int > 28 and retriever.temperature | int < 30 %} yellow 
+                        {% else %} red 
+                        {% endif %};">
+                    </div>
                 </div>
             </div>
             <div class="stat-item">
@@ -46,7 +53,13 @@
                 <h3>Humidity</h3>
                 <p>{{ retriever.humidity }}%</p>
                 <div class="progress-bar">
-                    <div class="progress" style="width: {{ retriever.humidity }}%;"></div>
+                    <div class="progress" style="width: {{ retriever.humidity }}%; background-color: 
+                        {% if retriever.humidity | int <= 50 %} red
+                        {% elif retriever.humidity | int > 50 and retriever.humidity | int < 70 %} yellow 
+                        {% elif retriever.humidity | int >= 70 and retriever.humidity | int <= 90 %} #3FFF00
+                        {% else %} red 
+                        {% endif %};">
+                    </div>
                 </div>
             </div>
             <div class="stat-item">
@@ -54,7 +67,11 @@
                 <h3>CO2 Level</h3>
                 <p>{{ retriever.co2 }} ppm</p>
                 <div class="progress-bar">
-                    <div class="progress" style="width: {{ retriever.co2 }}%;"></div>
+                    <div class="progress" style="width: {{ retriever.co2 }}%; background-color: 
+                        {% if retriever.co2 | int < 1000 %} #3FFF00
+                        {% else %} red 
+                        {% endif %};">
+                    </div>
                 </div>
             </div>
         </div>
