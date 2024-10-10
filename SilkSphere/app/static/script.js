@@ -1,3 +1,20 @@
+window.onscroll = function() {
+    const button = document.getElementById('scrollToTopBtn');
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        button.style.display = "block"; // Show the button
+    } else {
+        button.style.display = "none"; // Hide the button
+    }
+};
+
+// Scroll to the top of the page
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Smooth scroll
+    });
+}
+
 let dropArea = document.getElementById('drop-area');
 let uploadForm = document.getElementById('uploadForm');
 let predictionElement = document.getElementById('prediction');

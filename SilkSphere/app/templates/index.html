@@ -2,10 +2,10 @@
 
 {% block content %}
 
-    <h2 class="subheading" id="disease-detection">Disease Detection</h2>
-
-    <div class="container">
-        <div class="upload-container">
+<div class="disease-stats" id="disease-detection" style="padding: 20px; min-height: 300px;">
+    <h2 class="subheading">Disease Detection</h2>
+    <div class="container" style="padding: 20px;">
+        <div class="upload-container" style="padding: 20px; min-height: 300px;">
             <div id="drop-area">
                 <img src="{{ url_for('static', filename='cloud.png') }}" alt="Upload Cloud" class="upload-icon">
                 <form id="uploadForm" class="upload-form" method="post" enctype="multipart/form-data">
@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        <div class="image-container">
+        <div class="image-container" style="padding: 20px; min-height: 300px;">
             <div id="gallery">
                 {% if uploaded_image %}
                     <img src="{{ url_for('static', filename=uploaded_image) }}" alt="Uploaded Image">
@@ -29,11 +29,17 @@
         </div>
     </div>
 
-    <div class="environment-stats">
-        <h2 class="subheading" id="environment-stats">Environment Statistics</h2>
+    <div class="disclaimer">
+        <p><strong>Note:</strong> Consider providing images from various angles to help the model analyze the condition more effectively.</p>
+    </div>
+
+</div>
+
+    <div class="environment-stats" id="environment-stats" style="padding: 20px; min-height: 300px;">
+        <h2 class="subheading">Environment Statistics</h2>
     
         <div class="stats-container">
-            <div class="stat-item">
+            <div class="stat-item" style="margin-bottom: 20px;">
                 <img src="{{ url_for('static', filename='temperature-icon.png') }}" alt="Temperature" class="stat-icon">
                 <h3>Temperature</h3>
                 <p>{{ retriever.temperature }}°C</p>
@@ -48,7 +54,7 @@
                     </div>
                 </div>
             </div>
-            <div class="stat-item">
+            <div class="stat-item" style="margin-bottom: 20px;">
                 <img src="{{ url_for('static', filename='humidity-icon.png') }}" alt="Humidity" class="stat-icon">
                 <h3>Humidity</h3>
                 <p>{{ retriever.humidity }}%</p>
@@ -62,7 +68,7 @@
                     </div>
                 </div>
             </div>
-            <div class="stat-item">
+            <div class="stat-item" style="margin-bottom: 20px;">
                 <img src="{{ url_for('static', filename='co2-icon.png') }}" alt="CO2 Level" class="stat-icon">
                 <h3>CO2 Level</h3>
                 <p>{{ retriever.co2 }} ppm</p>
