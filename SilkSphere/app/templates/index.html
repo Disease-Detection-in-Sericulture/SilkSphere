@@ -71,7 +71,7 @@
             <div class="stat-item" style="margin-bottom: 20px;">
                 <img src="{{ url_for('static', filename='co2-icon.png') }}" alt="CO2 Level" class="stat-icon">
                 <h3>CO2 Level</h3>
-                <p>{{ retriever.co2 }} ppm</p>
+                <p>{{ retriever.co2 }} %</p>
                 <div class="progress-bar">
                     <div class="progress" style="width: {{ retriever.co2 }}%; background-color: 
                         {% if retriever.co2 | int < 1000 %} #3FFF00
