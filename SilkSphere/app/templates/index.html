@@ -19,7 +19,7 @@
         <div class="image-container" style="padding: 20px; min-height: 300px;">
             <div id="gallery">
                 {% if uploaded_image %}
-                    <img src="{{ url_for('static', filename=uploaded_image) }}" alt="Uploaded Image">
+                    <img src="{{ url_for('static', filename=uploaded_image) }}" alt="Uploaded Image", height="240px">
                 {% endif %}
             </div>
 
@@ -71,10 +71,10 @@
             <div class="stat-item" style="margin-bottom: 20px;">
                 <img src="{{ url_for('static', filename='co2-icon.png') }}" alt="CO2 Level" class="stat-icon">
                 <h3>CO2 Level</h3>
-                <p>{{ retriever.co2 }} %</p>
+                <p>{{ retriever.co2 }} ppm</p>
                 <div class="progress-bar">
-                    <div class="progress" style="width: {{ retriever.co2 }}%; background-color: 
-                        {% if retriever.co2 | int < 1000 %} #3FFF00
+                    <div class="progress" style="value: {{ retriever.co2 }}%; max: 1000; background-color: 
+                        {% if retriever.co2 | int <= 350 and retriever.co2 | int >= 700 %} #3FFF00
                         {% else %} red 
                         {% endif %};">
                     </div>
